@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +7,8 @@ namespace EndOfCycle
     [DisallowMultipleComponent]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] [Min(0f)] private float _lateralSpeed = 5f;
+        [SerializeField] [Min(0f)] private float _lateralSpeed = 10f;
+        [SerializeField] [Min(0f)] private float _forwardSpeed = 5f;
         [SerializeField] private InputActionReference _moveAction;
 
         private CharacterController _characterController;
@@ -22,7 +22,7 @@ namespace EndOfCycle
         {
             float value = _moveAction.action.ReadValue<float>();
             
-            Vector3 displacement = new Vector3(value, 0, 0) * (_lateralSpeed * Time.deltaTime);
+            Vector3 displacement = new Vector3(value * _lateralSpeed, 0f, _forwardSpeed) * Time.deltaTime;
             
             _characterController.Move(displacement);
         }

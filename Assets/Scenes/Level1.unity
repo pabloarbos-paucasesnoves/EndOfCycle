@@ -648,6 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndOfCycle.PlayerMovement
   _lateralSpeed: 10
+  _forwardSpeed: 5
   _moveAction: {fileID: 3915690609309598830, guid: 0cfa8eb58ef670e4b9ab0c29acbf6396, type: 3}
 --- !u!1 &1678344431
 GameObject:
