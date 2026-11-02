@@ -19,5 +19,9 @@
 *.json text eol=lf
 *.md text eol=lf
 *.txt text eol=lf
-*.gitignore text eol=lf
-*.gitattributes text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+*.shader text eol=lf
+*.hlsl text eol=lf
+*.cginc text eol=lf
+*.shadergraph text eol=lf
