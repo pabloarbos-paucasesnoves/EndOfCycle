@@ -30,7 +30,19 @@ namespace EndOfCycle
         {
             float value = _moveAction.action.ReadValue<float>();
             
-            Vector3 movement = new Vector3(value * _lateralSpeed, 0f, _forwardSpeed) * Time.deltaTime;
+            // 1. Lateral displacement this frame (meters)
+            float lateralDisplacement = value * _lateralSpeed * Time.deltaTime;
+
+            // 2. Target X if nothing limited it (position)
+            float targetX = transform.position.x + lateralDisplacement;
+
+            // 3. Target X limited to the allowed range (position)
+            float clampedX = Mathf.Clamp(targetX, _minCenterX, _maxCenterX);
+
+            // 4. Allowed displacement (meters): from where I am to where I may end up
+            float allowedDisplacement = clampedX - transform.position.x;
+            
+            Vector3 movement = new Vector3(allowedDisplacement, 0f, _forwardSpeed * Time.deltaTime);
             
             _characterController.Move(movement);
         }
