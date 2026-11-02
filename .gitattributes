@@ -8,6 +8,10 @@
 *.tga filter=lfs diff=lfs merge=lfs -text
 *.exr filter=lfs diff=lfs merge=lfs -text
 
+# Binary files kept outside LFS (small, Git must not touch them)
+*.ttf binary
+*.otf binary
+
 # Text files: LF in repo and working copy (Unity writes LF)
 *.cs text eol=lf
 *.unity text eol=lf
