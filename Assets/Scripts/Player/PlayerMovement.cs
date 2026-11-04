@@ -17,9 +17,22 @@ namespace EndOfCycle
         
         private CharacterController _characterController;
         
-
         private void Awake()
         {
+            if (!_groundCollider)
+            {
+                Debug.LogError($"{nameof(PlayerMovement)}: {nameof(_groundCollider)} is not assigned", this);
+                enabled = false;
+                return;
+            }
+
+            if (!_moveAction)
+            {
+                Debug.LogError($"{nameof(PlayerMovement)}: {nameof(_moveAction)} is not assigned", this);
+                enabled = false;
+                return;
+            }
+
             _characterController = GetComponent<CharacterController>();
 
             _minCenterX = _groundCollider.bounds.min.x + _characterController.radius;
@@ -54,6 +67,11 @@ namespace EndOfCycle
 
         private void OnDisable()
         {
+            if (!_moveAction)
+            {
+                return;
+            }
+
             _moveAction.action.Disable();
         }
     }
