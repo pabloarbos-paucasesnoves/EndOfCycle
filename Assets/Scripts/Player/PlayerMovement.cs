@@ -7,11 +7,14 @@ namespace EndOfCycle
     [DisallowMultipleComponent]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] [Min(0f)] private float _lateralSpeed = 10f;
-        [SerializeField] [Min(0f)] private float _forwardSpeed = 5f;
+        [Header("Movement settings")]
+        [SerializeField, Min(0f)] private float _lateralSpeed = 10f;
+        [SerializeField, Min(0f)] private float _forwardSpeed = 5f;
+
+        [Header("References")]
         [SerializeField] private InputActionReference _moveAction;
-        
         [SerializeField] private Collider _groundCollider;
+
         private float _minCenterX;
         private float _maxCenterX;
         
